@@ -1,6 +1,9 @@
 body {
   background-color: #242424;
   color: #ffffff;
+  margin: 20px;
+  padding: 0;
+  box-sizing: border-box;
   
 }
 .movie-app > .row {
@@ -9,4 +12,3 @@ body {
 }
 
 
-  
