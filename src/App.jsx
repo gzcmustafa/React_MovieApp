@@ -7,6 +7,7 @@ import SearchBox from "./components/SearchBox";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
 
@@ -19,13 +20,13 @@ function App() {
 
   useEffect(() => {
     getMoviesRequest();
-  }, []);
+  }, [searchValue]);
 
   return (
     <div className=" col-2 movie-app">
       <div className="row d-flex align-items-center mt-4 mb-4 ">
         <MovieListHeading heading="Movies" />
-        <SearchBox />
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row">
         <MovieList movies={movies} />
