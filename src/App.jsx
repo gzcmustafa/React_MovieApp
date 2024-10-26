@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
+import AddFavourite from "./components/AddFavourites";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -11,15 +12,18 @@ function App() {
 
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
 
-  const getMoviesRequest = async () => {
-    const url = `http://www.omdbapi.com/?s=avengers&apikey=${apiKey}`;
+  const getMoviesRequest = async (searchValue) => {
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=${apiKey}`;
     const response = await fetch(url);
     const responseJson = await response.json();
-    setMovies(responseJson.Search);
+
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
+    }
   };
 
   useEffect(() => {
-    getMoviesRequest();
+    getMoviesRequest(searchValue);
   }, [searchValue]);
 
   return (
@@ -29,7 +33,7 @@ function App() {
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row">
-        <MovieList movies={movies} />
+        <MovieList movies={movies} favouriteComponent={AddFavourite} />
       </div>
     </div>
   );

@@ -2,8 +2,11 @@ const MovieList = (props) => {
   return (
     <>
       {props.movies.map((movie, index) => (
-        <div className="d-flex justify-content-start">
+        <div className=" image-container d-flex justify-content-start col movie-card">
           <img src={movie.Poster} alt="movie" />
+          <div className="overlay d-flex align-items-center justify-content">
+            <props.favouriteComponent />
+          </div>
         </div>
       ))}
     </>
