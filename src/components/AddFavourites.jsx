@@ -9,9 +9,9 @@ const AddFavourite = () => {
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="red"
+        width="36"
+        height="36"
+        fill="green"
         className="bi bi-suit-heart-fill"
         viewBox="0 0 16 16"
       >
